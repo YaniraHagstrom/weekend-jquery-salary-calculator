@@ -18,7 +18,7 @@ let empData = [
 
 
 function makeReady(){
-    /// add empData to DOM:
+    ///** add empData to DOM:
     for (let employee of empData){
         $('#emp-table').append(`
         <tr id='added-emp'>
@@ -34,11 +34,11 @@ function makeReady(){
         `);
     };
 
-    // add click event to submit button
+    //** add click event to submit button
     $('#emp-submit').on('click', submitEmpData);
 
-    // add click event to delete buttons for each column
-        // maybe use $(this).on('click', 'if this is in the class name', perform function)
+    //** add click event to delete buttons for each column
+        //** maybe use $(this).on('click', 'if this is in the class name', perform function)
     $(this).on('click', '#delete-button', deleteEmpRow);
 
     //** Calculate sum of monthly costs:
@@ -46,10 +46,10 @@ function makeReady(){
 }
 
 function submitEmpData(){
-    ///append inputs and add as table data:
+    ///** append inputs and add as table data:
     let empFirstName = $('#first-name').val();
     let empLastName = $('#last-name').val();
-    let empID = $('#id').val();
+    let empID = Number($('#id').val());
     let empTitle = $('#title').val();
     let empAnnualSalary = Number($('#annual-salary').val());
         $('#emp-table').append(`
@@ -64,9 +64,9 @@ function submitEmpData(){
             </td>
             </tr>
         `);
-    /// clear inputs:
+    ///** clear inputs:
     $('input').val('');
-    /// store new employee in empData array:
+    ///** store new employee in empData array:
     empData.push(
         {firstName: empFirstName, 
         lastName: empLastName, 
@@ -74,19 +74,18 @@ function submitEmpData(){
         title: empTitle, 
         annualSalary: empAnnualSalary}
     );
+    console.log(empData);
 }
 
-/// Delete employee row when 'Delete' button is clicked:
+////** When the 'Delete' button is clicked:
 function deleteEmpRow(){
-    /// Need to somehow collect all of the emp data associated with $(this) delete button then locate it in the empData array and delete it:
+    ///** Need to somehow collect all of the emp data associated with $(this) delete button then locate it in the empData array and delete it:
     let empIDSelected = Number($(this).closest('#added-emp').find('#emp-ID').text());
-    console.log(empIDSelected);
 
     //** Delete the selected employee by id:
     empData = empData.filter(function(emp){ return emp.iD !== empIDSelected 
     })
     
-    //** when 'Delete' button is clicked, this will remove the tr that was clicked:
+    //** when 'Delete' button is clicked, this will remove the <tr> that was clicked:
     $(this).closest('#added-emp').remove();
-
 }
