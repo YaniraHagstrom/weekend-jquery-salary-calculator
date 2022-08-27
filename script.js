@@ -32,8 +32,10 @@ function makeReady(){
         </tr>
         `);
     };
+
     // add click event to submit button
     $('#emp-submit').on('click', submitEmpData);
+
     // add click event to delete buttons for each column
         // maybe use $(this).on('click', 'if this is in the class name', perform function)
     $(this).on('click', '#delete-button', deleteEmpRow);
@@ -73,6 +75,8 @@ function submitEmpData(){
 
 /// Delete employee row when 'Delete' button is clicked:
 function deleteEmpRow(){
-    // $(this).remove('#added-emp');
-    console.log($(this));
+    /// when 'Delete' button is clicked, this will remove the tr that was clicked:
+    $(this).closest('#added-emp').remove();
+    // console.log($(this).closest('#added-emp'));
+    // remove('#added-emp');
 }
