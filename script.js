@@ -18,13 +18,25 @@ let empData = [
 
 function makeReady(){
     /// add empData to DOM:
-    for (let employee of empData);
-
-
+    for (let employee of empData){
+        $('#emp-table').append(`
+        <tr id='added-emp'>
+        <td>${employee.firstName}</td>
+        <td>${employee.lastName}</td>
+        <td>${employee.iD}</td>
+        <td>${employee.title}</td>
+        <td>${employee.annualSalary}</td>
+        <td>
+        <button id='delete-button'>Delete</button>
+        </td>
+        </tr>
+        `);
+    };
     // add click event to submit button
     $('#emp-submit').on('click', submitEmpData);
     // add click event to delete buttons for each column
         // maybe use $(this).on('click', 'if this is in the class name', perform function)
+    $(this).on('click', '#delete-button', deleteEmpRow);
     
 }
 
@@ -47,6 +59,8 @@ function submitEmpData(){
             </td>
             </tr>
         `);
+    /// clear inputs:
+    $('input').val('');
     /// store new employee in empData array:
     empData.push(
         {firstName: empFirstName, 
@@ -57,3 +71,8 @@ function submitEmpData(){
     );
 }
 
+/// Delete employee row when 'Delete' button is clicked:
+function deleteEmpRow(){
+    // $(this).remove('#added-emp');
+    console.log($(this));
+}
