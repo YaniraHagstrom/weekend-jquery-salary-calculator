@@ -16,6 +16,7 @@ let empData = [
     annualSalary: 48000}];
 
 
+
 function makeReady(){
     /// add empData to DOM:
     for (let employee of empData){
@@ -23,7 +24,7 @@ function makeReady(){
         <tr id='added-emp'>
         <td>${employee.firstName}</td>
         <td>${employee.lastName}</td>
-        <td>${employee.iD}</td>
+        <td id='emp-ID'>${employee.iD}</td>
         <td>${employee.title}</td>
         <td>${employee.annualSalary}</td>
         <td>
@@ -39,6 +40,8 @@ function makeReady(){
     // add click event to delete buttons for each column
         // maybe use $(this).on('click', 'if this is in the class name', perform function)
     $(this).on('click', '#delete-button', deleteEmpRow);
+
+    //** Calculate sum of monthly costs:
     
 }
 
@@ -51,9 +54,9 @@ function submitEmpData(){
     let empAnnualSalary = Number($('#annual-salary').val());
         $('#emp-table').append(`
             <tr id='added-emp'>
-            <td>${empFirstName}</td>
+            <td id='emp-firstName'>${empFirstName}</td>
             <td>${empLastName}</td>
-            <td>${empID}</td>
+            <td id='emp-ID'>${empID}</td>
             <td>${empTitle}</td>
             <td>${empAnnualSalary}</td>
             <td>
@@ -75,8 +78,15 @@ function submitEmpData(){
 
 /// Delete employee row when 'Delete' button is clicked:
 function deleteEmpRow(){
-    /// when 'Delete' button is clicked, this will remove the tr that was clicked:
+    /// Need to somehow collect all of the emp data associated with $(this) delete button then locate it in the empData array and delete it:
+    let empIDSelected = Number($(this).closest('#added-emp').find('#emp-ID').text());
+    console.log(empIDSelected);
+
+    //** Delete the selected employee by id:
+    empData = empData.filter(function(emp){ return emp.iD !== empIDSelected 
+    })
+    
+    //** when 'Delete' button is clicked, this will remove the tr that was clicked:
     $(this).closest('#added-emp').remove();
-    // console.log($(this).closest('#added-emp'));
-    // remove('#added-emp');
+
 }
