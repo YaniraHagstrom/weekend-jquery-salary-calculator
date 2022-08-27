@@ -16,11 +16,13 @@ let empData = [
     annualSalary: 48000}];
 
 //** Calculate sum of monthly costs:
-let monthlyCost = 0;
-
 function totalMonthlyCost (){
+    let monthlyCost = 0;
     for (let employee of empData){
-        monthlyCost += employee.annualSalary / 12;
+        let monthlySalary = employee.annualSalary / 12
+        console.log(employee.annualSalary, monthlySalary)
+        monthlyCost += monthlySalary;
+        $('#total-monthly-cost').text(`Total Monthly Cost: ${monthlyCost}`);
     }
 }
 
@@ -50,7 +52,6 @@ function makeReady(){
 
     //** Update sum of monthly costs:
     totalMonthlyCost();
-    $('#total-monthly-cost').text(`Total Monthly Cost: ${monthlyCost.toLocaleString()}`);
 }
 
 function submitEmpData(){
@@ -83,6 +84,8 @@ function submitEmpData(){
         annualSalary: empAnnualSalary}
     );
     console.log(empData);
+    //** Update sum of monthly costs:
+    totalMonthlyCost();
 }
 
 ////** When the 'Delete' button is clicked:
@@ -96,4 +99,7 @@ function deleteEmpRow(){
     
     //** when 'Delete' button is clicked, this will remove the <tr> that was clicked:
     $(this).closest('#added-emp').remove();
+
+    //** Update sum of monthly costs:
+    totalMonthlyCost();
 }
