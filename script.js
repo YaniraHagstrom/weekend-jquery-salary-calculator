@@ -17,6 +17,10 @@ let empData = [
 
 
 function makeReady(){
+    /// add empData to DOM:
+    for (let employee of empData);
+
+
     // add click event to submit button
     $('#emp-submit').on('click', submitEmpData);
     // add click event to delete buttons for each column
@@ -30,17 +34,26 @@ function submitEmpData(){
     let empLastName = $('#last-name').val();
     let empID = $('#id').val();
     let empTitle = $('#title').val();
-    let empAnnualSalary = $('#annual-salary').val();
+    let empAnnualSalary = Number($('#annual-salary').val());
         $('#emp-table').append(`
-        <tr id='added-emp'>
-        <td>${empFirstName}</td>
-        <td>${empLastName}</td>
-        <td>${empID}</td>
-        <td>${empTitle}</td>
-        <td>${empAnnualSalary}</td>
-        <td>
-        <button id='delete-button'>Delete</button>
-        </td>
-        </tr>
+            <tr id='added-emp'>
+            <td>${empFirstName}</td>
+            <td>${empLastName}</td>
+            <td>${empID}</td>
+            <td>${empTitle}</td>
+            <td>${empAnnualSalary}</td>
+            <td>
+            <button id='delete-button'>Delete</button>
+            </td>
+            </tr>
         `);
+    /// store new employee in empData array:
+    empData.push(
+        {firstName: empFirstName, 
+        lastName: empLastName, 
+        iD: empID, 
+        title: empTitle, 
+        annualSalary: empAnnualSalary}
+    );
 }
+
