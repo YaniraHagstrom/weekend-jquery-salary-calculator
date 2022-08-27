@@ -15,7 +15,14 @@ let empData = [
     title: 'Quality Assurance', 
     annualSalary: 48000}];
 
+//** Calculate sum of monthly costs:
+let monthlyCost = 0;
 
+function totalMonthlyCost (){
+    for (let employee of empData){
+        monthlyCost += employee.annualSalary / 12;
+    }
+}
 
 function makeReady(){
     ///** add empData to DOM:
@@ -41,8 +48,9 @@ function makeReady(){
         //** maybe use $(this).on('click', 'if this is in the class name', perform function)
     $(this).on('click', '#delete-button', deleteEmpRow);
 
-    //** Calculate sum of monthly costs:
-    
+    //** Update sum of monthly costs:
+    totalMonthlyCost();
+    $('#total-monthly-cost').text(`Total Monthly Cost: ${monthlyCost.toLocaleString()}`);
 }
 
 function submitEmpData(){
