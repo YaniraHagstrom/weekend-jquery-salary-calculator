@@ -4,27 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="script.js"></script>
     <title>Salary Calculator</title>
 </head>
 
 <body>
     <h1>Salary Calculator</h1>
-    <!-- Input employee data here -->
     <section id="emp-inputs">
         <h2>Add Employees</h2>
-        <input type="text" placeholder="First Name" >
-        <input type="text" placeholder="Last Name" >
-        <input type="number" placeholder="ID" >
-        <input type="text" placeholder="Title" >
-        <input type="number" placeholder="Annual Salary" >
+        <input id="first-name" type="text" placeholder="First Name" >
+        <input id="last-name" type="text" placeholder="Last Name" >
+        <input id="id" type="number" placeholder="ID" >
+        <input id="title" type="text" placeholder="Title" >
+        <input id="annual-salary" type="number" placeholder="Annual Salary" >
     </section>
-
-    <!-- Table stuff here -->
+    <button id="emp-submit">Submit</button>
+    <!-- Add input data here -->
     <section id="existing-emp">
         <h2>Employees</h2>
-        <table>
+        <table id="emp-table">
             <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
@@ -33,8 +32,8 @@
                 <th>Annual Salary</th>
                 <th></th>
             </tr>
+            <!-- Add employees here! -->
         </table>
-
     </section>
     
 </body>
