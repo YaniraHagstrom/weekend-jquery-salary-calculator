@@ -22,7 +22,7 @@ function totalMonthlyCost (){
         let monthlySalary = employee.annualSalary / 12
         console.log(employee.annualSalary, monthlySalary)
         monthlyCost += monthlySalary;
-        $('#total-monthly-cost').text(`Total Monthly Cost: ${monthlyCost}`);
+        $('#total-monthly-cost').text(`Total Monthly Cost: ${monthlyCost.toLocaleString()}`);
     }
 }
 
